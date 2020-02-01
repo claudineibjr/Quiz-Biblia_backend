@@ -1,12 +1,15 @@
-/*
+///*
 // ---------- API v1 -------------
 import exampleServer from './Example/exampleServer';
 import * as functions from 'firebase-functions';
 
-export const api = functions.https.onRequest(exampleServer.express);
-*/
+exampleServer.createHttpServer({});
+const express = exampleServer.express;
 
-///*
+export const exampleApi = functions.https.onRequest(express);
+//*/
+
+/*
 // ---------- API v2 -------------
 
 import { GraphQLServer } from 'graphql-yoga';
@@ -30,4 +33,4 @@ server.createHttpServer({});
 const express = server.express;
 
 export const api = functions.https.onRequest(express);
-//*/
+*/
