@@ -1,0 +1,43 @@
+type User {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+input UserInput {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+##Exemplo de chamada da query users
+#query{
+#  users{
+#    id
+#    name
+#    email
+#  }
+#}
+
+## Exemplo de chamada da query user
+#query{  
+#  user(id: '1'){
+#    id
+#  }
+#}
+
+## Exemplo de chamada da mutation createUser
+#query{
+#  user(id: "5"){
+#    name
+#  }
+#}
+
+type Query {
+    users: [User!]!
+    user(id: ID!): User
+}
+
+type Mutation {
+    createUser(user: UserInput!): User
+}
