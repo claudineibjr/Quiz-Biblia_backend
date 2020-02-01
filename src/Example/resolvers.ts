@@ -4,18 +4,18 @@ let users = [
     {id: '3', name: 'Steve Jobs', email: 'steve@hotmail.com'}
 ];
 
-function createUser(user){
+function createUser(user: any){
     users.push(user);
     return user;
 }
 
-module.exports = {
+export const resolvers = {
     Query: {
         users: () => users,
-        user: (_, { id }) => users.find(x => x.id === id)
+        user: (_context: any, { id }: any) => users.find(x => x.id === id)
     },
 
     Mutation: {
-        createUser: (_, {user}) => createUser(user),
+        createUser: (_context: any, {user}: any) => createUser(user),
     }
 }
