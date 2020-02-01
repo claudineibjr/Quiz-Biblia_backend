@@ -2,9 +2,11 @@ import { GraphQLServer } from 'graphql-yoga';
 import path from 'path';
 import {resolvers} from './resolvers';
 
-const server = new GraphQLServer({
+const exampleServer = new GraphQLServer({
   typeDefs: path.resolve(__dirname, 'schema.graphql'),
   resolvers: resolvers
 });
 
-server.start();
+//server.start();
+
+export default exampleServer;

@@ -1,22 +1,17 @@
 {
-  "name": "quiz-biblia_backend",
+  "name": "Quiz-Biblia_backend_firebase",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "nodemon --watch \"src/\" --exec \"ts-node src/Example/index.ts\" -e ts"
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/express": "^4.17.2",
-    "express": "^4.17.1",
-    "graphql": "^14.6.0",
-    "graphql-yoga": "^1.18.3",
-    "nodemon": "^2.0.2",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "graphql-yoga": "^1.18.3"
   }
 }
