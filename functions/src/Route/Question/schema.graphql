@@ -1,0 +1,35 @@
+scalar Date
+
+#fragment fullQuestion on Question {
+#
+#}
+
+# Model Question
+type Question {
+    idQuestion: Int
+    textQuestion: String
+    answer: Int
+    alternatives: [String]
+    textBiblical: String
+    dificulty: Int
+    testament: Int
+    bibleSection: Int
+    biblicalReference: String
+}
+
+input QuestionFilter {
+    dificulty: Int
+    testament: Int
+    bibleSection: Int
+}
+
+# Queries
+type Query {
+    getQuestion(userAnswered: [Int]!, questionFilter: QuestionFilter!): Question
+    getQuestionById(idQuestion: Int!): Question
+}
+
+# Mutations
+#type Mutation {
+#    
+#}

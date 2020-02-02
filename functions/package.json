@@ -3,7 +3,7 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json",
     "build": "tsc && npm run copySchemas",
-    "copySchemas": "cp src/Example/schema.graphql lib/Example/ && cp src/Route/User/schema.graphql lib/Route/User/",
+    "copySchemas": "cp src/Example/schema.graphql lib/Example/ && cp src/Route/User/schema.graphql lib/Route/User/ && cp src/Route/Question/schema.graphql lib/Route/Question/",
     "onlyServe": "firebase serve --only functions",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
