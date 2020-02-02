@@ -1,4 +1,24 @@
-#scalar Date
+scalar Date
+
+#fragment fullUser on User{
+#    uid
+#    email
+#    name
+#    answered
+#    score
+#    lastPlay
+#    firstAccess
+#    bonus{
+#      moreTime
+#      lessAlternatives
+#      showBiblicalReference
+#      lastBonusReceived
+#    }
+#    preferences{
+#      sounds
+#      vibration
+#    }
+#}
 
 # Model User
 type User{
@@ -7,10 +27,8 @@ type User{
     name: String
     answered: [Int]
     score: Int
-    #lastPlay: Date
-    lastPlay: String
-    #firstAccess: Date
-    firstAccess: String
+    lastPlay: Date
+    firstAccess: Date
     bonus: UserBonus
     preferences: UserPreferences
 }
@@ -19,8 +37,7 @@ type UserBonus {
     moreTime: Int
     lessAlternatives: Int
     showBiblicalReference: Int
-    #lastBonusReceived: Date
-    lastBonusReceived: String
+    lastBonusReceived: Date
 }
 
 type UserPreferences {

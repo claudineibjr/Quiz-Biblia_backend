@@ -1,25 +1,24 @@
 import User from "../../Model/User";
+import UserServices from "../../Services/UserServices";
 
-let users: Array<User> = [
-    new User('claudineibjr@hotmai.com', 'Claudinei Brito Junior',),
-    new User('mavasco_15@outlook.com', 'Marcela Vasco Pereira Brito')
-];
-
-function getUserByEmail (email: string): User | undefined {
-    return users.find(user => user.email === email);
+async function getUserByEmail (email: string): Promise<User | undefined> {
+    const user = await UserServices.getUserByEmail(email);
+    return user;
 }
 
-function getUserById (id: string): User | undefined {
-    return users.find(user => user.uid === id);
+async function getUserById (id: string): Promise<User | undefined> {
+    const user = await UserServices.getUserByID(id);
+    return user;
 }
 
-function createUser (user: {email: string, name: string, password: string}): User | undefined {
-    const newUser: User = new User(user.email, user.name);
-    users.push(newUser);
+async function createUser (user: {email: string, name: string, password: string}): Promise<User | undefined> {
+    let newUser = new User(user.email, user.name);
+    newUser = await UserServices.createUser(user.email, user.password, newUser);
     return newUser;
 }
 
-function getAllUsers(): Array<User> {
+async function getAllUsers(): Promise<Array<User>> {
+    const users = await UserServices.getAllUsers();
     return users;
 }
 
