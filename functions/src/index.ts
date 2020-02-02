@@ -1,36 +1,14 @@
-///*
-// ---------- API v1 -------------
-import exampleServer from './Example/exampleServer';
+// Imports
 import * as functions from 'firebase-functions';
 
-exampleServer.createHttpServer({});
-const express = exampleServer.express;
+import usersRoute from './Route/User/UsersRoute';
 
-export const exampleApi = functions.https.onRequest(express);
-//*/
+// #region "EndPoints"
 
-/*
-// ---------- API v2 -------------
+// Users
+usersRoute.createHttpServer({});
+const usersRouteExpress = usersRoute.express;
 
-import { GraphQLServer } from 'graphql-yoga';
-import * as functions from 'firebase-functions';
+export const users = functions.https.onRequest(usersRouteExpress);
 
-const typeDefs = `
-  type Query {
-    hello(name: String): String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: (_context: any, { name }: any) => `Hello ${name || 'World'}`,
-  },
-};
-
-const server = new GraphQLServer({ typeDefs, resolvers });
-
-server.createHttpServer({});
-const express = server.express;
-
-export const api = functions.https.onRequest(express);
-*/
+// #endregion

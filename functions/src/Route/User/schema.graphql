@@ -1,0 +1,51 @@
+#scalar Date
+
+# Model User
+type User{
+    uid: String
+    email: String
+    name: String
+    answered: [Int]
+    score: Int
+    #lastPlay: Date
+    lastPlay: String
+    #firstAccess: Date
+    firstAccess: String
+    bonus: UserBonus
+    preferences: UserPreferences
+}
+
+type UserBonus {
+    moreTime: Int
+    lessAlternatives: Int
+    showBiblicalReference: Int
+    #lastBonusReceived: Date
+    lastBonusReceived: String
+}
+
+type UserPreferences {
+    sounds: Boolean
+    vibration: Boolean
+}
+
+input UserInput_Create {
+    email: String!
+    name: String!
+    password: String!
+}
+
+#type UserInput_Update {
+#
+#}
+
+# Queries
+type Query{
+    getUserByEmail(email: String!): User
+    getUserById(id: String!): User
+    getAllUsers: [User]
+}
+
+# Mutations
+type Mutation {
+    createUser(user: UserInput_Create!): User
+}

@@ -2,7 +2,9 @@
   "name": "functions",
   "scripts": {
     "lint": "tslint --project tsconfig.json",
-    "build": "tsc && cp src/Example/schema.graphql lib/Example/",
+    "build": "tsc && npm run copySchemas",
+    "copySchemas": "cp src/Example/schema.graphql lib/Example/ && cp src/Route/User/schema.graphql lib/Route/User/",
+    "onlyServe": "firebase serve --only functions",
     "serve": "npm run build && firebase serve --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -15,6 +17,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@types/ws": "^7.2.1",
+    "firebase": "^7.8.0",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
     "graphql-yoga": "^1.18.3"
