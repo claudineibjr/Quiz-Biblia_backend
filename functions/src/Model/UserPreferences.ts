@@ -3,8 +3,8 @@ export default class UserPreferences{
     vibration: boolean;
 
     constructor (sounds?: boolean, vibration?: boolean){
-        this.sounds = sounds === undefined ? true : sounds!;
-        this.vibration = vibration === undefined ? true : vibration!;
+        this.sounds = sounds === undefined ? true : sounds;
+        this.vibration = vibration === undefined ? true : vibration;
     }
 
     static getClassFromObject(newUserBonus: any): UserPreferences {

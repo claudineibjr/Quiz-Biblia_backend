@@ -1,3 +1,4 @@
+// tslint:disable-next-line: no-implicit-dependencies
 import fetch from 'cross-fetch';
 
 // tslint:disable-next-line: no-shadowed-variable
