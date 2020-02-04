@@ -17,6 +17,11 @@ async function createUser (user: {email: string, name: string, password: string}
     return newUser;
 }
 
+async function loginUser (email: string, password: string): Promise<User | undefined> {
+    const user = await UserServices.loginUser(email, password);
+    return user;
+}
+
 async function getAllUsers(): Promise<Array<User>> {
     const users = await UserServices.getAllUsers();
     return users;
@@ -31,5 +36,6 @@ export const resolvers = {
 
     Mutation: {
         createUser: (_context: any, {user}: any) => createUser(user),
+        loginUser: (_context: any, {email, password}: any) => loginUser(email, password)
     }
 }

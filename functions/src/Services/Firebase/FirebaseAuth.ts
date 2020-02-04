@@ -13,5 +13,17 @@ export default class FirebaseAuth {
             });
         });
     }
+
+    public static loginUser(email: string, password: string): Promise<void> {
+        initializeFirebase();
+
+        return new Promise<void>((resolve, reject) => {
+            authentication().signInWithEmailAndPassword(email, password).then((value) => {
+                resolve()
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
     
 }

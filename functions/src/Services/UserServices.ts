@@ -47,6 +47,19 @@ export default class UserServices{
 		});
 	}
 
+	public static loginUser(email: string, password: string): Promise<User>{
+		return new Promise<User>(async (resolve, reject) => {
+			try {
+				await FirebaseAuth.loginUser(email, password);
+
+				const user = await UserDB.getUserByEmail(email);
+				resolve(user);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	}
+
 	public static deleteUser(user: User): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
 			resolve(UserDB.deleteUser(user));
