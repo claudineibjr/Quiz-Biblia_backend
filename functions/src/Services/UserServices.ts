@@ -25,15 +25,19 @@ export default class UserServices{
 
 	public static createUser(email: string, password: string, user?: User): Promise<User> {
 		return new Promise<User>(async (resolve, reject) => {
-			const userID = await FirebaseAuth.createUser(email, password);
+			try {
+				const userID = await FirebaseAuth.createUser(email, password);
 
-			let newUser = user;
-			if (newUser === undefined)
-				newUser = new User(email, '');
+				let newUser = user;
+				if (newUser === undefined)
+					newUser = new User(email, '');
 
-			newUser.uid = userID;
-			await UserDB.createAndUpdateUser(newUser);
-			resolve(user);
+				newUser.uid = userID;
+				await UserDB.createAndUpdateUser(newUser);
+				resolve(user);
+			} catch (error) {
+				reject(error);
+			}
 		});
 	}
 
