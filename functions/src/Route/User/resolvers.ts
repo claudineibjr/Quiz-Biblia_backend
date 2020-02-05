@@ -22,6 +22,11 @@ async function loginUser (email: string, password: string): Promise<User | undef
     return user;
 }
 
+async function forgetPassword(email: string): Promise<Boolean> {
+    await UserServices.forgetPassword(email);
+    return true;
+}
+
 async function getAllUsers(): Promise<Array<User>> {
     const users = await UserServices.getAllUsers();
     return users;
@@ -36,6 +41,7 @@ export const resolvers = {
 
     Mutation: {
         createUser: (_context: any, {user}: any) => createUser(user),
-        loginUser: (_context: any, {email, password}: any) => loginUser(email, password)
+        loginUser: (_context: any, {email, password}: any) => loginUser(email, password),
+        forgetPassword: (_context: any, {email}: any) => forgetPassword(email)
     }
 }

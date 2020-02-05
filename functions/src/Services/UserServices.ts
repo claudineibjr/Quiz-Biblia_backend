@@ -66,4 +66,15 @@ export default class UserServices{
 		});
 	}
 
+	public static forgetPassword(email: string): Promise<void> {
+		return new Promise<void>(async (resolve, reject) => {
+			try{
+				await FirebaseAuth.forgetPassword(email);
+				resolve();
+			} catch (error) {
+				reject(error);
+			}
+		});
+	}
+
 }

@@ -25,5 +25,17 @@ export default class FirebaseAuth {
             });
         });
     }
+
+    public static forgetPassword(email: string): Promise<void> {
+        initializeFirebase();
+
+        return new Promise<void>((resolve, reject) => {
+            authentication().sendPasswordResetEmail(email).then((_value) => {
+                resolve();
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
     
 }
